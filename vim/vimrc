@@ -656,6 +656,7 @@
     endif
     NeoBundleLazy 'guns/xterm-color-table.vim', {'autoload':{'commands':'XtermColorTable'}}
     NeoBundle 'chrisbra/vim_faq'
+    NeoBundleLazy 'chrisbra/csv.vim', {'autoload': {'filetypes':['csv']}}
     NeoBundle 'vimwiki'
     NeoBundle 'xolox/vim-notes' "{{{
       let g:notes_directories = ['~/.vim/notes']
