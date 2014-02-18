@@ -353,7 +353,7 @@
     NeoBundleLazy 'Glench/Vim-Jinja2-Syntax', {'autoload':{'filetypes':['jinja']}}
     NeoBundleLazy 'mustache/vim-mustache-handlebars', {'autoload':{'filetypes':['mustache', 'handlebars']}}
     NeoBundleLazy 'gregsexton/MatchTag', {'autoload':{'filetypes':['html','xml']}}
-    NeoBundleLazy 'mattn/emmet-vim', {'autoload':{'filetypes':['html','xml','xsl','xslt','xsd','css','sass','scss','less','mustache']}}
+    NeoBundleLazy 'mattn/emmet-vim', {'autoload':{'filetypes':['html','xml','xsl','xslt','xsd','css','sass','scss','less','mustache','jinja', 'htmldjango']}}
   endif "}}}
   if count(s:settings.plugin_groups, 'javascript') "{{{
     NeoBundleLazy 'marijnh/tern_for_vim', {
