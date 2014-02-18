@@ -657,6 +657,9 @@
     NeoBundleLazy 'guns/xterm-color-table.vim', {'autoload':{'commands':'XtermColorTable'}}
     NeoBundle 'chrisbra/vim_faq'
     NeoBundle 'vimwiki'
+    NeoBundle 'xolox/vim-notes' "{{{
+      let g:notes_directories = ['~/.vim/notes']
+    "}}}
     NeoBundle 'xolox/vim-session' "{{{
       let g:session_autosave = 'yes'
       let g:session_autoload = 'yes'
