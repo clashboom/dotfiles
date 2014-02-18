@@ -128,7 +128,7 @@
 "}}}
 
 " base configuration {{{
-  set timeoutlen=300                                  "mapping timeout
+  set timeoutlen=500                                  "mapping timeout
   set ttimeoutlen=50                                  "keycode timeout
   " Make the 'cw' and like commands put a $ at the end instead of just deleting the text and replacing it
   set cpoptions+=ces$
