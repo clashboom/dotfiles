@@ -130,7 +130,8 @@
 " base configuration {{{
   set timeoutlen=300                                  "mapping timeout
   set ttimeoutlen=50                                  "keycode timeout
-
+  " Make the 'cw' and like commands put a $ at the end instead of just deleting the text and replacing it
+  set cpoptions+=ces$
   set mouse=a                                         "enable mouse
   set mousehide                                       "hide when characters are typed
   set history=1000                                    "number of command lines to remember
@@ -151,6 +152,8 @@
   set showfulltag
   set modeline
   set modelines=5
+  " Syntax coloring lines that are too long just slows down the world
+  set synmaxcol=2048
 
   if s:is_windows && !s:is_cygwin
     " ensure correct shell in gvim
@@ -159,6 +162,7 @@
 
   " whitespace
   set backspace=indent,eol,start                      "allow backspacing everything in insert mode
+  set diffopt+=iwhite                                 "add ignorance of whitespace to diff
   set autoindent                                      "automatically indent to match adjacent lines
   set virtualedit=all                                 "allow the cursor to go to invalid places
   set expandtab                                       "spaces instead of tabs
@@ -234,6 +238,8 @@
 
 " ui configuration {{{
   set showmatch                                       "automatically highlight matching braces/brackets/etc.
+  noremap % v%
+  set matchpairs=(:),{:},[:] " List of characters we expect in balanced pairs
   set matchtime=2                                     "tens of a second to show matching parentheses
   set number
   set ch=2                                            "make command line 2 lines high
@@ -243,6 +249,8 @@
   set foldenable                                      "enable folds by default
   set foldmethod=syntax                               "fold via syntax of files
   set foldlevelstart=99                               "open all folds by default
+  " These commands open folds
+  set foldopen=block,insert,jump,mark,percent,quickfix,search,tag,undo
   let g:xml_syntax_folding=1                          "enable xml folding
 
   set cursorline
@@ -269,6 +277,8 @@
 
     set guioptions+=t                                 "tear off menu items
     set guioptions-=T                                 "toolbar icons
+    " set the gui options the way I like
+    " set guioptions=acimg
 
     if s:is_macvim
       set gfn=Ubuntu_Mono:h14
@@ -712,6 +722,9 @@
 
   " Toggle paste mode
   nmap <silent> <leader>p :set invpaste<CR>:set paste?<CR>
+
+  " Set text wrapping toggles
+  nmap <silent> <Leader>tw :set invwrap<CR>:set wrap?<CR>
 
   " remap arrow keys
   nnoremap <left> :bprev<CR>

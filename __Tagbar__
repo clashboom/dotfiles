@@ -1,0 +1,68 @@
+" Press <F1> for help
+
+▶ imports
+
+▼ Eka : class
+   +__init__ : function
+    [variables]
+    __slots__
+
+▼ Handler : class
+   +render : function
+   +render_str : function
+   +write : function
+
+▼ MainPage : class
+   +get : function
+
+▼ Overview : class
+   +get : function
+
+▼ PopulateDB : class
+   +get : function
+
+▼ Product : class
+    [variables]
+    description
+    eka
+    inStock
+    priceIn
+    priceOut
+
+▼ ProductViewer : class
+   +get : function
+
+▼ Purchase : class
+   +Process : function
+
+▼ PurchaseHandler : class
+   +get : function
+   +post : function
+
+▼ Sale : class
+   +Process : function
+
+▼ SalesHandler : class
+   +get : function
+
+▼ Transaction : class
+   +Query : function
+   +QueryByKey : function
+    [variables]
+    eka
+    price
+    product
+    quantity
+    time
+
+▼ Utilities : class
+   +getTransactions : function
+   +gvizTransactions : function
+   +translateDates : function
+   +translateEka : function
+
+▼ variables
+    JINJA_ENV
+    TEMPLATE_DIR
+    app
+    autoescape
