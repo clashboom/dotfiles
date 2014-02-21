@@ -275,10 +275,8 @@
       autocmd GUIEnter * simalt ~x
     endif
 
-    set guioptions+=t                                 "tear off menu items
-    set guioptions-=T                                 "toolbar icons
     " set the gui options the way I like
-    " set guioptions=acimg
+    set guioptions=acimg
 
     if s:is_macvim
       set gfn=Ubuntu_Mono:h14
@@ -745,6 +743,9 @@
   " smash escape
   inoremap jk <esc>
   inoremap kj <esc>
+
+  " yank the buffer to system register
+  nmap <leader>ya :%y+<CR>
 
   " change cursor position in insert mode
   inoremap <C-h> <left>
