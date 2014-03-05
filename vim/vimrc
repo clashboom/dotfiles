@@ -275,10 +275,8 @@
       autocmd GUIEnter * simalt ~x
     endif
 
-    set guioptions+=t                                 "tear off menu items
-    set guioptions-=T                                 "toolbar icons
     " set the gui options the way I like
-    " set guioptions=acimg
+    set guioptions=acimg
 
     if s:is_macvim
       set gfn=Ubuntu_Mono:h14
@@ -397,9 +395,13 @@
     NeoBundleLazy 'nsf/gocode', {'autoload': {'filetypes':['go']}, 'rtp': 'vim'}
   endif "}}}
   if count(s:settings.plugin_groups, 'c') "{{{
-    NeoBundleLazy 'a.vim', {'autoload':{'filetypes':['c']}}
+    NeoBundleLazy 'derekwyatt/vim-fswitch', {'autoload':{'filetypes':['c', 'cpp']}} "{{{
+      " Switch to the file and load it into the current window 
+      nmap <silent> <Leader>of :FSHere<cr>
+      " Switch to the file and load it into a new window split on the right
+      nmap <silent> <Leader>oL :FSSplitRight<cr>
+    "}}}
   endif "}}}
-
   if count(s:settings.plugin_groups, 'scm') "{{{
     NeoBundle 'mhinz/vim-signify' "{{{
       let g:signify_update_on_bufenter=0
@@ -425,6 +427,7 @@
     "}}}
   endif "}}}
   if count(s:settings.plugin_groups, 'autocomplete') "{{{
+    NeoBundle 'Raimondi/delimitMate'
     NeoBundle 'honza/vim-snippets'
     if s:settings.autocomplete_method == 'ycm' "{{{
       NeoBundle 'Valloric/YouCompleteMe', {'vim_version':'7.3.584'} "{{{
@@ -649,6 +652,7 @@
       NeoBundle 'christoomey/vim-tmux-navigator'
     endif
     NeoBundle 'kana/vim-vspec'
+    NeoBundle 'tpope/vim-abolish'
     NeoBundleLazy 'tpope/vim-scriptease', {'autoload':{'filetypes':['vim']}}
     NeoBundleLazy 'plasticboy/vim-markdown', {'autoload':{'filetypes':['markdown', 'md']}}
     if executable('redcarpet') && executable('instant-markdown-d')
@@ -739,6 +743,9 @@
   " smash escape
   inoremap jk <esc>
   inoremap kj <esc>
+
+  " yank the buffer to system register
+  nmap <leader>ya :%y+<CR>
 
   " change cursor position in insert mode
   inoremap <C-h> <left>
