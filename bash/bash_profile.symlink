@@ -8,6 +8,11 @@ unset file
 # init z   https://github.com/rupa/z
 . ~/code/z/z.sh
 
+# vim
+VIM=/usr/local/bin/vim
+VIMRUNTIME=/usr/local/share/vim/vim74/
+EDITOR=$VIM/vim
+
 # init rvm
 # source ~/.rvm/scripts/rvm
 
