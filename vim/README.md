@@ -1,4 +1,3 @@
-
 # bling.vim
 Vim config based on [bling.vim - "A highly tuned vim distribution that will blow your socks off!"](https://github.com/bling/dotvim)
 
@@ -368,3 +367,8 @@ I wanted to give special thanks to all of the people who worked on the following
 [nc]: https://github.com/Shougo/neocomplete.vim
 [ncl]: https://github.com/Shougo/neocomplcache.vim
 [ns]: https://github.com/Shougo/neosnippet.vim
+
+
+Running into errors when installing npm packages? Reclaim your rights!
+sudo chown -R `whoami` ~/.npm
+sudo chown -R `whoami` /usr/local/lib/node_modules
