@@ -13,31 +13,18 @@ _Key components:_
 After finishing post-install script:
 
 Sources:
-[The definitive guide to proprietary AMD graphics driver](http://crunchbang.org/forums/viewtopic.php?id=17948&p=5)
+[The definitive guide to proprietary AMD graphics driver](http://crunchbang.org/forums/viewtopic.php?id=17948&p=5)  
 [How I install Ati drivers on Crunchbang Statler and Debian Squeeze](http://crunchbang.org/forums/viewtopic.php?id=15952)
-
-```
-$sudo apt-get install dkms linux-headers-$(uname -r) fglrx-driver fglrx-control xvba-va-driver
-```
-
-
-[**virtualenvwrapper**](http://virtualenvwrapper.readthedocs.org/en/latest/) 
-
-
-## Installing Vim
-
-Sources:
-https://github.com/Valloric/YouCompleteMe/wiki/Building-Vim-from-source
 
 ```
 $sudo apt-get install dkms linux-headers-$(uname -r) fglrx-driver fglrx-control xvba-va-driver
 ```
 The above will install the drivers, control software, video hardware acceleration and other recommended packages. DKMS will build the required module for your kernel. Depending on what release of Debian you're using, you'll get different driver versions or you may choose to force a testing/unstable/experimental package install on apt-get. 
 
+Setup an initial Xorg configuration
 ```
 sudo aticonfig --initial
 ```
-Setup an initial Xorg configuration
 
 Starting X you can check if it's installed properly:
 ```
@@ -51,6 +38,19 @@ And use the AMD/ATI graphical control utility to further setup (root is required
 ```
 $ gksudo amdcccle
 ```
+
+[**virtualenvwrapper**](http://virtualenvwrapper.readthedocs.org/en/latest/) 
+
+
+## Installing Vim
+
+Sources:
+[Building Vim from source](https://github.com/Valloric/YouCompleteMe/wiki/Building-Vim-from-source)
+
+
+
+
+
 
 
 
