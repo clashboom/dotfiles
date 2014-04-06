@@ -270,7 +270,7 @@
 
   if has('gui_running')
     " open maximized
-    set lines=999 columns=9999
+    set lines=99 columns=99
     if s:is_windows
       autocmd GUIEnter * simalt ~x
     endif
