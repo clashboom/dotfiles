@@ -344,9 +344,9 @@
     NeoBundleLazy 'groenewege/vim-less', {'autoload':{'filetypes':['less']}}
     NeoBundleLazy 'cakebaker/scss-syntax.vim', {'autoload':{'filetypes':['scss','sass']}}
     NeoBundleLazy 'hail2u/vim-css3-syntax', {'autoload':{'filetypes':['css','scss','sass']}}
-    NeoBundleLazy 'ap/vim-css-color', {'autoload':{'filetypes':['css','scss','sass','less','styl']}}
+    NeoBundleLazy 'ap/vim-css-color', {'autoload':{'filetypes':['css','scss','sass','less','stylus']}}
     NeoBundleLazy 'othree/html5.vim', {'autoload':{'filetypes':['html']}}
-    NeoBundleLazy 'wavded/vim-stylus', {'autoload':{'filetypes':['styl']}}
+    NeoBundleLazy 'wavded/vim-stylus', {'autoload':{'filetypes':['stylus']}}
     NeoBundleLazy 'digitaltoad/vim-jade', {'autoload':{'filetypes':['jade']}}
     NeoBundleLazy 'Glench/Vim-Jinja2-Syntax', {'autoload':{'filetypes':['jinja']}}
     NeoBundleLazy 'mustache/vim-mustache-handlebars', {'autoload':{'filetypes':['mustache', 'handlebars']}}
@@ -901,7 +901,7 @@
   autocmd FileType html setlocal ts=2 sts=2 sw=2 expandtab
   autocmd FileType htmldjango setlocal ts=2 sts=2 sw=2 expandtab
   autocmd FileType jade setlocal ts=2 sts=2 sw=2 expandtab
-  autocmd FileType stylus setlocal ts=4 sts=4 sw=4 expandtab
+  autocmd FileType stylus setlocal ts=2 sts=2 sw=2 expandtab
   autocmd FileType javascript,js setlocal ts=2 sts=2 sw=2 expandtab
   autocmd FileType java,c,cpp,objc setlocal ts=4 sts=4 sw=4 expandtab
   autocmd FileType vim setlocal ts=2 sts=2 sw=2 expandtab
