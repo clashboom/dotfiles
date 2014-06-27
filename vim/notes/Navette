@@ -1,0 +1,33 @@
+Navette
+## Notes:
+   • _Navette_ lives on as a brand name.
+   • Composite industry as category
+   • Technologies - no spray layup, no autoclaves, just wet layup and vacuum infusions.
+   • Simple, friendly, usable.
+
+
+## TODO:
+   • Translate all content from english to norwegian and vice versa.
+   • Create content for Amarok and Hilux hardtops, About page in both languages.
+   • Add proper imagery, use picturefill for responsiveness.
+   • Add back to top links on both - bottom of the page and one that shows up when user scrolls-up (see Google Keep for example).
+   • Add Terms & Conditions, Privacy Policy.
+   • Logo redesign - themed around Marquise/Navette diamond cut, perhaps. Replace the font to something more suitable, if needed ???
+   • Check h5bp or Corry Simons Boy boilerplate for crossdomain policy. Related files, too.
+   • Add a live search, hide input field. See Unibox and Codrops for example. Make it work well.
+     For this proper data modeling is needed, otherwise maintenance of JSON file will be major PITA in the future.
+   • Add URLs from Google Static Map API to the contact page
+   • Dont show region restriction note to users with norwegian locale
+
+
+
+To get started enter a title for your note above. When you’re ready to save
+your note just use Vim’s :write or :update commands, a filename will be picked
+automatically based on the title.
+                                    * * *
+
+The notes plug-in comes with self hosting documentation. To jump to these notes
+position your cursor on the highlighted name and press ‘gf’ in normal mode:
+
+ • Note taking syntax
+ • Note taking commands

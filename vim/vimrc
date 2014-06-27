@@ -663,13 +663,7 @@
     NeoBundleLazy 'chrisbra/csv.vim', {'autoload': {'filetypes':['csv']}}
     NeoBundle 'vimwiki'
     NeoBundle 'xolox/vim-notes' "{{{
-      let g:notes_directories = ['~/.vim/notes']
-    "}}}
-    NeoBundle 'xolox/vim-session' "{{{
-      let g:session_autosave = 'yes'
-      let g:session_autoload = 'yes'
-      let g:session_directory = '~/.vim/.cache/sessions'
-
+      let g:notes_directories = ['~/.dotfiles/vim/notes']
     "}}}
     NeoBundle 'bufkill.vim'
     NeoBundle 'IndexedSearch'
