@@ -834,6 +834,9 @@
   map <silent> <leader>tm :tabm
   map <silent> <leader>ts :tab split<CR>
 
+  " toggle scrollbind
+  nmap <F6> :windo set scrollbind!<cr>
+
   " make Y consistent with C and D. See :help Y.
   nnoremap Y y$
 
