@@ -1,74 +1,99 @@
-background yes
+# Use Xft?
 use_xft yes
-xftfont Sans:size=8
-xftalpha 1
-update_interval 1.0
+xftfont AvantGarde:size=12
+xftalpha 0.8
+text_buffer_size 2048
+
+# Update interval in seconds
+update_interval 1
+
+# This is the number of times Conky will update before quitting.
+# Set to zero to run forever.
 total_run_times 0
+
+# Create own window instead of using desktop (required in nautilus)
 own_window yes
 own_window_transparent yes
-own_window_type desktop
+own_window_type override
+own_window_class conky
 own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+background no
+
+# Use double buffering (reduces flicker, may not work for everyone)
 double_buffer yes
-minimum_size 200 700
-maximum_width 250
-draw_shades yes
+
+# Minimum size of text area
+minimum_size 300 300
+#maximum_width 200
+
+# Draw shades?
+draw_shades no
+
+# Draw outlines?
 draw_outline no
+
+# Draw borders around text
 draw_borders no
-draw_graph_borders yes
-default_color gray
+
+# Stippled borders?
+stippled_borders 0
+
+# border margins
+border_inner_margin 5
+
+# border width
+border_width 1
+
+# Default colors and also border colors
+default_color white
 default_shade_color black
-default_outline_color gray
+default_outline_color black
+own_window_colour white
+color1 white
+
+# Text alignment, other possible values are commented
+# alignment top_left
+#alignment top_middle
 alignment top_right
-# gap_x 12
-# gap_y 12
+#alignment bottom_left
+#alignnment bottom_middle
+#alignment bottom_right
+
+
+# Gap between borders of screen and text
+# same thing as passing -x at command line
+gap_x 0
+gap_y 0
+
+# Subtract file system buffers from used memory?
 no_buffers yes
+
+# set to yes if you want all text to be in uppercase
 uppercase no
+
+# number of cpu samples to average
+# set to 1 to disable averaging
 cpu_avg_samples 2
+
+# number of net samples to average
+# set to 1 to disable averaging
+net_avg_samples 2
+
+# Force UTF8? note that UTF8 support required XFT
 override_utf8_locale yes
 
+# Add spaces to keep things from moving about?  This only affects certain objects.
+use_spacer none
+
 TEXT
-${font sans-serif:bold:size=8}SYSTEM ${hr 2}
-${font sans-serif:normal:size=8}$sysname $kernel $alignr $machine
-Host:$alignr$nodename
-Uptime:$alignr$uptime
-File System: $alignr${fs_type}
 
-${font sans-serif:bold:size=8}PROCESSORS ${hr 2}
-${font sans-serif:normal:size=8}${cpugraph cpu1}
-CPU1: ${cpu cpu1}% ${cpubar cpu1}
-CPU2: ${cpu cpu2}% ${cpubar cpu2}
-CPU3: ${cpu cpu3}% ${cpubar cpu3}
-CPU4: ${cpu cpu4}% ${cpubar cpu4}
+${font AvantGarde:size=108}TTL:${exec echo $((`date --date "20270511 1455" +%s` - `date +%s`))}${font}
+# ${font AvantGarde:size=108}${time %H:%M}${font}
+#${offset 400}${voffset -120}${color 1AA3C1}${font AvantGarde::size=36}${time %d}${color} ${font AvantGarde::size=18}${time %B} ${color 1AA3C1}${time %Y}${color}
+#${offset 400}${voffset 10}${font AvantGarde:size=36}${time %A}${font}
 
-${font sans-serif:bold:size=8}MEMORY ${hr 2}
-${font sans-serif:normal:size=8}RAM $alignc $mem / $memmax $alignr $memperc%
-$membar
-
-${font sans-serif:bold:size=8}DISKS ${hr 2}
-${font sans-serif:normal:size=8}/ $alignc ${fs_used /} / ${fs_size /} $alignr ${fs_used_perc /}%
-${fs_bar /}
-SWAP $alignc ${swap} / ${swapmax} $alignr ${swapperc}%
-${swapbar}
-
-${font sans-serif:bold:size=8}TEMPERATURES ${hr 2}
-${font sans-serif:normal:size=8}
-Athlon II X4 620:  $alignr${execi 10 sensors | grep ^temp2 |awk '{print $2}'}
-AMD Radeon R9 270: $alignr${execi 10 sensors | grep ^temp1 | tail -n 1 | awk '{print $2}'}
-
-${font sans-serif:bold:size=8}TOP PROCESSES ${hr 2}
-${font sans-serif:normal:size=8}
-${top_mem name 1}${alignr}${top mem 1} %
-${top_mem name 2}${alignr}${top mem 2} %
-$font${top_mem name 3}${alignr}${top mem 3} %
-$font${top_mem name 4}${alignr}${top mem 4} %
-$font${top_mem name 5}${alignr}${top mem 5} %
-
-${font sans-serif:bold:size=8}NETWORK ${hr 2}
-${font sans-serif:normal:size=8}IP address: $alignr ${addr ath0}
-ESSID: $alignr ${wireless_essid ath0}
-Connection quality: $alignr ${wireless_link_qual_perc ath0}%
-${downspeedgraph ath0}
-DLS:${downspeed ath0} kb/s $alignr total: ${totaldown ath0}
-${upspeedgraph ath0}
-ULS:${upspeed ath0} kb/s $alignr total: ${totalup ath0}
-
+${offset 35}CPU${offset 100}RAM${offset 95}SWAP${offset 60}KERNEL
+${cpubar cpu1 8,100}${offset 35}${membar 8,100}${offset 35}${swapbar 8,100}${offset 33}${color 1AA3C1}${kernel}${color}
+${offset 30}ROOT${offset 88}HOME${offset 90}CPU${offset 67}UPTIME
+${fs_bar 8,100 /}${offset 35}${fs_bar 8,100 /home}${offset 62}TEMP.${offset 64}${color 1AA3C1}${uptime}${color}
+${offset 20}${color 1AA3C1}${fs_used /}${color}${offset 85}${color 1AA3C1}${fs_used /home}${color}${offset 85}${color 1AA3C1}${hwmon temp 1}°C${color}
