@@ -88,13 +88,19 @@ let s:cache_dir = get(g:dotvim_settings, 'cache_dir', '~/.vim/.cache')
     set rtp+=~/.vim
   endif
   set rtp+=~/.vim/bundle/neobundle.vim
-  call neobundle#rc(expand('~/.vim/bundle/'))
+  call neobundle#begin(expand('~/.vim/bundle/'))
   NeoBundleFetch 'Shougo/neobundle.vim'
 "}}}
 
 " functions {{{
   function! s:get_cache_dir(suffix) "{{{
     return resolve(expand(s:cache_dir . '/' . a:suffix))
+  endfunction "}}}
+  function! Source(begin, end) "{{{
+    let lines = getline(a:begin, a:end)
+    for line in lines
+      execute line
+    endfor
   endfunction "}}}
   function! Preserve(command) "{{{
     " preparation: save last search, and cursor position.
@@ -133,7 +139,7 @@ let s:cache_dir = get(g:dotvim_settings, 'cache_dir', '~/.vim/.cache')
 "}}}
 
 " base configuration {{{
-  set timeoutlen=500                                  "mapping timeout
+  set timeoutlen=300                                  "mapping timeout
   set ttimeoutlen=50                                  "keycode timeout
   " Make the 'cw' and like commands put a $ at the end instead of just deleting the text and replacing it
   set cpoptions+=ces$
@@ -188,7 +194,7 @@ let s:cache_dir = get(g:dotvim_settings, 'cache_dir', '~/.vim/.cache')
   set linebreak
   let &showbreak='↪ '
 
-  set scrolloff=8                                     "always show content after scroll
+  set scrolloff=1                                     "always show content after scroll
   set scrolljump=5                                    "minimum number of lines to scroll
   set display+=lastline
   set wildmenu                                        "show list for autocomplete
@@ -357,7 +363,7 @@ let s:cache_dir = get(g:dotvim_settings, 'cache_dir', '~/.vim/.cache')
     NeoBundleLazy 'hail2u/vim-css3-syntax', {'autoload':{'filetypes':['css','scss','sass']}}
     NeoBundleLazy 'ap/vim-css-color', {'autoload':{'filetypes':['css','scss','sass','less','stylus']}}
     NeoBundleLazy 'othree/html5.vim', {'autoload':{'filetypes':['html']}}
-    NeoBundleLazy 'wavded/vim-stylus', {'autoload':{'filetypes':['stylus']}}
+    NeoBundleLazy 'wavded/vim-stylus', {'autoload':{'filetypes':['stylus', 'styl']}}
     NeoBundleLazy 'digitaltoad/vim-jade', {'autoload':{'filetypes':['jade']}}
     NeoBundleLazy 'Glench/Vim-Jinja2-Syntax', {'autoload':{'filetypes':['jinja']}}
     NeoBundleLazy 'mustache/vim-mustache-handlebars', {'autoload':{'filetypes':['mustache', 'handlebars']}}
@@ -478,7 +484,6 @@ let s:cache_dir = get(g:dotvim_settings, 'cache_dir', '~/.vim/.cache')
     if s:settings.autocomplete_method == 'neocomplete' "{{{
       NeoBundleLazy 'Shougo/neocomplete.vim', {'autoload':{'insert':1}, 'vim_version':'7.3.885'} "{{{
         let g:neocomplete#enable_at_startup=1
-        let g:neocomplete#force_overwrite_completefunc=1
         let g:neocomplete#data_directory=s:get_cache_dir('neocomplete')
       "}}}
     endif "}}}
@@ -540,7 +545,6 @@ let s:cache_dir = get(g:dotvim_settings, 'cache_dir', '~/.vim/.cache')
       let g:ctrlp_max_height=40
       let g:ctrlp_show_hidden=0
       let g:ctrlp_follow_symlinks=1
-      let g:ctrlp_working_path_mode=0
       let g:ctrlp_max_files=20000
       let g:ctrlp_cache_dir=s:get_cache_dir('ctrlp')
       let g:ctrlp_reuse_window='startify'
@@ -575,7 +579,6 @@ let s:cache_dir = get(g:dotvim_settings, 'cache_dir', '~/.vim/.cache')
     "}}}
     NeoBundleLazy 'majutsushi/tagbar', {'autoload':{'commands':'TagbarToggle'}} "{{{
       nnoremap <silent> <F4> :TagbarToggle<CR>
-      " let g:tagbar_autofocus = 1
     "}}}
     NeoBundle 'xolox/vim-misc'
     NeoBundle 'xolox/vim-easytags'
@@ -586,15 +589,16 @@ let s:cache_dir = get(g:dotvim_settings, 'cache_dir', '~/.vim/.cache')
       function! bundle.hooks.on_source(bundle)
         call unite#filters#matcher_default#use(['matcher_fuzzy'])
         call unite#filters#sorter_default#use(['sorter_rank'])
-        call unite#set_profile('files', 'smartcase', 1)
         call unite#custom#source('line,outline','matchers','matcher_fuzzy')
+        call unite#custom#profile('default', 'context', {
+                      \ 'start_insert': 1,
+                      \ 'direction': 'botright',
+                      \ })
       endfunction
 
       let g:unite_data_directory=s:get_cache_dir('unite')
-      let g:unite_enable_start_insert=1
       let g:unite_source_history_yank_enable=1
       let g:unite_source_rec_max_cache_files=5000
-      let g:unite_prompt='» '
 
       if executable('ag')
         let g:unite_source_grep_command='ag'
@@ -962,8 +966,6 @@ let s:cache_dir = get(g:dotvim_settings, 'cache_dir', '~/.vim/.cache')
   NeoBundle 'zeis/vim-kolor' "{{{
     let g:kolor_underlined=1
   "}}}
-
-  exec 'colorscheme '.s:settings.colorscheme
 "}}}
 
 " finish loading {{{
@@ -973,7 +975,10 @@ let s:cache_dir = get(g:dotvim_settings, 'cache_dir', '~/.vim/.cache')
     endfor
   endif
 
+  call neobundle#end()
   filetype plugin indent on
   syntax enable
+  exec 'colorscheme '.s:settings.colorscheme
+
   NeoBundleCheck
 "}}}
