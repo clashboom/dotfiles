@@ -1,6 +1,6 @@
 # Use Xft?
 use_xft yes
-xftfont Anonymous Pro:size=10
+xftfont Anonymous Pro:size=12
 xftalpha 0.8
 text_buffer_size 2048
  
@@ -23,7 +23,7 @@ double_buffer yes
 # Minimum size of text area
 #minimum_size 200 0
 minimum_size 200 200
-maximum_width 240
+maximum_width 300
  
  
 # Draw shades?
@@ -45,7 +45,7 @@ stippled_borders 0
 border_width 1
  
 # Default colors and also border colors
-default_color white
+default_color grey
 #default_shade_color black
 #default_outline_color white
 own_window_colour 333333
@@ -83,65 +83,52 @@ override_utf8_locale yes
 use_spacer none
  
 TEXT
-Kernel
- +
- | + $nodename ${kernel}
- +
-Time
- +
- | + ${time %H:%M} ${time %d %b %Y}
- | + TTL:  ${exec echo $((`date --date "20270511 1455" +%s` - `date +%s`))}
- +
-System
- +
- | + CPU:  ${cpu cpu0}%
- | + RAM:  $memperc%
- | + Temp: ${hwmon temp 1}ºC
- | + /:    ${fs_free /root}/${fs_size /root}
- | + /var: ${fs_free /var}/${fs_size /var}
- | + ~/:   ${fs_free /home}/${fs_size /home}
- +
-Net
- +
- | + Up:   ${upspeed eth0}kb/s (${totalup eth0})
- | + Down: ${downspeed eth0}kb/s (${totaldown eth0})
- +
-Processes
- +
- | + NAME  $alignr PID     CPU
- | + ${top name 1} $alignr ${top pid 1} ${top cpu 1}
- | + ${top name 2} $alignr ${top pid 2} ${top cpu 2}
- | + ${top name 3} $alignr ${top pid 3} ${top cpu 3}
- | + ${top name 4} $alignr ${top pid 4} ${top cpu 4}
- | + ${top name 5} $alignr ${top pid 5} ${top cpu 5}
- +
+Kernel${hr 1}
+ | $nodename ${kernel}
+
+Time${hr 1}
+ | ${time %H:%M} ${time %d %b %Y}
+ | TTL:  ${exec echo $((`date --date "20270511 1455" +%s` - `date +%s`))}
+
+System${hr 1}
+ | CPU:  ${cpu cpu0}%
+ | RAM:  $memperc%
+ | Temp: ${hwmon temp 1}ºC
+ | /:    ${fs_free /root}/${fs_size /root}
+ | ~/:   ${fs_free /home}/${fs_size /home}
+ | /var: ${fs_free /var}/${fs_size /var}
+ 
+Net${hr 1}
+ | Up:   ${upspeed eth0}kb/s (${totalup eth0})
+ | Down: ${downspeed eth0}kb/s (${totaldown eth0})
+ 
+Processes${hr 1}
+ | NAME  $alignr PID     CPU
+ | ${top name 1} ${top pid 1} ${top cpu 1}
+ | ${top name 2} ${top pid 2} ${top cpu 2}
+ | ${top name 3} ${top pid 3} ${top cpu 3}
+ | ${top name 4} ${top pid 4} ${top cpu 4}
+ | ${top name 5} ${top pid 5} ${top cpu 5}
+ 
 #Gmail
 # +
 # | Unread: ${execpi 300 python3 /home/ajibola/scripts/gmail.py}
 # +  
-Shortcuts
- +
- | + Alt+F2$alignr Run Dialog
- | + Alt+F3$alignr Alt Menu
- | + Super+Space$alignr Main Menu
- | + Super+Tab$alignr Client Menu
- | + Super+t$alignr Terminal
- | + Super+f$alignr File Manager
- | + Super+e$alignr Editor
- | + Super+m$alignr Media Player
- | + Super+w$alignr Web Browser
- | + Super+h$alignr Task Manager
- | + Super+l$alignr Lock Screen
- | + Super+v$alignr Volume Control
- | + Super+x$alignr Logout
- | + PrtSc$alignr Screenshot
- +
-Music ${if_mpd_playing}
- +
+Shortcuts${hr 1}
+ | Super+Space$alignr Main Menu
+ | Super+Tab$alignr Client Menu
+ | Super+m$alignr Media Player
+ | Super+w$alignr Web Browser
+ | Super+h$alignr Task Manager
+ | Super+l$alignr Lock Screen
+ | Super+v$alignr Volume Control
+ | Super+x$alignr Logout
+
+Music ${if_mpd_playing}${hr 1}
  | $mpd_artist
  | $mpd_album
  | ${mpd_title 15}
  | $mpd_elapsed/$mpd_length
  | $mpd_status
  | ${mpd_bar 5,180} ${else}stopped $endif
- +
+ 
