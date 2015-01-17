@@ -83,52 +83,52 @@ override_utf8_locale yes
 use_spacer none
  
 TEXT
-Kernel${hr 1}
- | $nodename ${kernel}
+KERNEL ${hr 1}
+| $nodename ${kernel}
 
-Time${hr 1}
- | ${time %H:%M} ${time %d %b %Y}
- | TTL:  ${exec echo $((`date --date "20270511 1455" +%s` - `date +%s`))}
+TIME ${hr 1}
+| ${time %H:%M} ${time %d %b %Y}
+| TTL:  ${exec echo $((`date --date "20270511 1455" +%s` - `date +%s`))}
 
-System${hr 1}
- | CPU:  ${cpu cpu0}%
- | RAM:  $memperc%
- | Temp: ${hwmon temp 1}ºC
- | /:    ${fs_free /root}/${fs_size /root}
- | ~/:   ${fs_free /home}/${fs_size /home}
- | /var: ${fs_free /var}/${fs_size /var}
+SYSTEM ${hr 1}
+| CPU:  ${cpu cpu0}%
+| RAM:  $memperc%
+| Temp: ${hwmon temp 1}ºC
+| /:    ${fs_free /root}/${fs_size /root}
+| ~/:   ${fs_free /home}/${fs_size /home}
+| /var: ${fs_free /var}/${fs_size /var}
  
-Net${hr 1}
- | Up:   ${upspeed eth0}kb/s (${totalup eth0})
- | Down: ${downspeed eth0}kb/s (${totaldown eth0})
+NET ${hr 1}
+| Up:   ${upspeed eth0}kb/s (${totalup eth0})
+| Down: ${downspeed eth0}kb/s (${totaldown eth0})
  
-Processes${hr 1}
- | NAME  $alignr PID     CPU
- | ${top name 1} ${top pid 1} ${top cpu 1}
- | ${top name 2} ${top pid 2} ${top cpu 2}
- | ${top name 3} ${top pid 3} ${top cpu 3}
- | ${top name 4} ${top pid 4} ${top cpu 4}
- | ${top name 5} ${top pid 5} ${top cpu 5}
- 
+TOP ${hr 1}
+| NAME  $alignr PID     CPU
+| ${top name 1} ${top pid 1} ${top cpu 1}
+| ${top name 2} ${top pid 2} ${top cpu 2}
+| ${top name 3} ${top pid 3} ${top cpu 3}
+| ${top name 4} ${top pid 4} ${top cpu 4}
+| ${top name 5} ${top pid 5} ${top cpu 5}
+
 #Gmail
 # +
 # | Unread: ${execpi 300 python3 /home/ajibola/scripts/gmail.py}
 # +  
-Shortcuts${hr 1}
- | Super+Space$alignr Main Menu
- | Super+Tab$alignr Client Menu
- | Super+m$alignr Media Player
- | Super+w$alignr Web Browser
- | Super+h$alignr Task Manager
- | Super+l$alignr Lock Screen
- | Super+v$alignr Volume Control
- | Super+x$alignr Logout
+KEYBINDS ${hr 1}
+| Super+Space$alignr Main Menu
+| Super+Tab$alignr Client Menu
+| Super+m$alignr Media Player
+| Super+w$alignr Web Browser
+| Super+h$alignr Task Manager
+| Super+l$alignr Lock Screen
+| Super+v$alignr Volume Control
+| Super+x$alignr Logout
 
-Music ${if_mpd_playing}${hr 1}
- | $mpd_artist
- | $mpd_album
- | ${mpd_title 15}
- | $mpd_elapsed/$mpd_length
- | $mpd_status
- | ${mpd_bar 5,180} ${else}stopped $endif
+MUSIC ${if_mpd_playing}${hr 1}
+| $mpd_artist
+| $mpd_album
+| ${mpd_title 15}
+| $mpd_elapsed/$mpd_length
+| $mpd_status
+| ${mpd_bar 5,180} ${else}stopped $endif
  
