@@ -1,6 +1,6 @@
 # Use Xft?
 use_xft yes
-xftfont Anonymous Pro:size=12
+xftfont Liberation Sans:size=10
 xftalpha 0.8
 text_buffer_size 2048
  
