@@ -887,6 +887,7 @@ let s:cache_dir = get(g:dotvim_settings, 'cache_dir', '~/.vim/.cache')
 
   " general
   nmap <leader>l :set list! list?<cr>
+  " toggle highlighting search results
   nnoremap <BS> :set hlsearch! hlsearch?<cr>
 
   map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'

@@ -2,8 +2,9 @@ let g:dotvim_settings = { }
 let g:dotvim_settings.version = 1
 let g:dotvim_settings.max_column = 80
 let g:dotvim_settings.colorscheme = "molokai"
+let g:python_host_prog='/usr/bin/python'
  " web, javascript, python, go, scala, ruby
-let g:dotvim_settings.plugin_groups_exclude  = ['go', 'scala']
+let g:dotvim_settings.plugin_groups_exclude  = ['go', 'scala', 'ruby']
 
 source ~/.dotfiles/vim/vimrc
 
