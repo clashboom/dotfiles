@@ -410,6 +410,7 @@ let s:cache_dir = get(g:dotvim_settings, 'cache_dir', '~/.vim/.cache')
     NeoBundleLazy 'fs111/pydoc.vim', {'autoload':{'filetypes':['python']}}
     NeoBundleLazy 'klen/python-mode', {'autoload':{'filetypes':['python']}} "{{{
       let g:pymode_rope=0
+      let g:pymode_run_bind="<C-S-e>"
     "}}}
     NeoBundleLazy 'davidhalter/jedi-vim', {'autoload':{'filetypes':['python']}} "{{{
       let g:jedi#popup_on_dot=0
