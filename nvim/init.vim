@@ -1,14 +1,17 @@
 if &compatible
   set nocompatible
 endif
-set runtimepath+={'~/.cache/dein'}
 
-if dein#load_state({'~/.config/nvim/plugin'})
-  call dein#begin({'~/.config/nvim/plugin'})
+set runtimepath^=~/.cache/dein/repos/github.com/Shougo/dein.vim
+let g:bundle_path = '~/.cache/dein/bundle'
 
-  call dein#add({'~/.cache/dein'})
-  call dein#add('Shougo/neocomplete.vim')
-  ...
+if dein#load_state(g:bundle_path)
+  call dein#begin(g:bundle_path)
+
+  call dein#add('Shougo/dein.vim')
+  call dein#add('Shougo/deoplete.nvim')
+  call dein#add('davidhalter/jedi')
+  call dein#add('zchee/deoplete-jedi')
 
   call dein#end()
   call dein#save_state()
