@@ -1,6 +1,6 @@
 #!/bin/bash
 #using the path WALLPAPERS will select a new random wallpaper
-DIR="/media/Sandbox/Downloads/Desktop/random/Wallpapers"
+DIR="/media/clash/Guts/Wallpapers"
 RANGE=$(ls $DIR | wc -l)
 
 # in increments of 5 to match the line with

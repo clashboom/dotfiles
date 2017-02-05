@@ -9,17 +9,17 @@ unset file
 . ~/code/z/z.sh
 
 # vim
-VIM=/usr/local/bin/vim
-VIMRUNTIME=/usr/local/share/vim/vim74/
-EDITOR=$VIM/vim
+#VIM=/usr/local/bin/vim
+#VIMRUNTIME=/usr/local/share/vim/vim74/
+#EDITOR=$VIM/vim
 
 # init rvm
 # source ~/.rvm/scripts/rvm
 
 # virtualenv
-export WORKON_HOME=~/code/envs
-mkdir -p $WORKON_HOME
-source /usr/local/bin/virtualenvwrapper.sh
+#export WORKON_HOME=~/code/envs
+#mkdir -p $WORKON_HOME
+#source /usr/local/bin/virtualenvwrapper.sh
 
 # Case-insensitive globbing (used in pathname expansion)
 shopt -s nocaseglob
